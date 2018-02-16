@@ -27,16 +27,14 @@ The output file will be one .evec file (eigenvectors) and one .eval file (eigenv
 
 Go to R and plot your results with the [scripts](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/PlottingPCA.r)
 
-<object data="https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/PCA_1and2_colorPOP_manual_Myset.pdf" type="application/pdf" width="700px" height="700px">
-<embed src="https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/PCA_1and2_colorPOP_manual_Myset.pdf">
-This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-</embed>
-</object>
+________________________________________
 
-![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/PCA_1and2_colorPOP_manual_Myset.pdf)
+Some examples:
+
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE1.png)
 
 more beautiful plot, but less control over colors and symbols
 
-![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/PCA_1and2_colormyDatavsPublished.pdf)
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE2.png)
 
 
