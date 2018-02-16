@@ -40,15 +40,16 @@ A simple awk command to merge and reorder the columns of my .snp file
 ```
 
 I obtain this kind of .snp file, where column $1 is the name of the snp, $2 is the chromosome, $3 is the position of the SNP in centimorgans on the chromosome, $3 is the position in bases, $4 and $5 are the reference and variant alleles.
-1_565596        1        0.006200        565596        G        A
-1_567137        1        0.006200        567137        C        T
+
+*1_565596        1        0.006200        565596        G        A
+*1_567137        1        0.006200        567137        C        T
     
-Manually change the .ind file to include the populations. With awk, again. I create a separate list of populations per each individual (in one column)
+Manually change the .ind file to include the populations. With awk, again. I create a separate list of populations per each individual (in one column). I call the file "addStringPopsToIndFile.txt"
 
 ```
 awk 'FNR==NR{a[NR]=$1;next}{$3=a[FNR]}1' addStringPopsToIndFile.txt yourfileEigenformat.ind > yourfileEigenformat_Familypop_EIGEN.ind
 ```
-And now merge, with appropriate [parfile] (https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/parfiles/par.MERGE). Your dataset is the yourfileEigenformat, to be merged with a set called downloadedDatasetToMergeEigenformat, let's place them all in the folder /MERGE
+And now merge, with appropriate [parfile](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/parfiles/par.MERGE). Your dataset is the yourfileEigenformat, to be merged with a set called downloadedDatasetToMergeEigenformat, let's place them all in the folder /MERGE
 
 ```
 mergeit -p par.MERGE
