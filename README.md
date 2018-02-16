@@ -3,7 +3,7 @@
 
 The folder contains different sections for most used analysis methods to perform on SNP chip databases. It is particularly tailored to the use of the Human Origins Affymetrix array, and for analysis of human population history.
 
-The commands use publicity available softwares and packages such as:
+The commands use publicity available softwares and packages (which you should install before) such as:
  
 ### PLINK https://www.cog-genomics.org/plink2 
 
@@ -27,6 +27,12 @@ The input files in the Eigenstrat format are nameofyourfile.geno, nameofyourfile
 
 Other commands from software packages such as bcftools https://samtools.github.io/bcftools/ are sporadicly used. Bash scripts and some awk simple commands come in help.
 
+
+## CONTENT
+Start with the General Commands for some data overview, and then check each folder for instruction on how perform the analysis proposed.
+
 ## DISCLAIMER and biography notes:
-I am not a bioinformatician - I am a molecular anthropologist, in fact. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends. I am looking forward to improve them with suggestions and corrections.
+I am not a bioinformatician - I am "just" a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends. I am looking forward to improve them with suggestions and corrections.
+
+Contact me with [email](mailto:barbieri.chiara@gmail.com)
 
