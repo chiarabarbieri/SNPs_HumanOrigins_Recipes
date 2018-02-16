@@ -8,6 +8,6 @@ snp2:	/MERGE/yourfileEigenformat.simple.snp
 ind2:	/MERGE/yourfileEigenformat_Familypop_EIGEN.ind
 genooutfilename:	/MERGE/MyDataset.merged.geno
 snpoutfilename:	/MERGE/MyDataset.merged.simple.snp
-indoutfilename:	/MERGE/MyDataset.merged..ind
+indoutfilename:	/MERGE/MyDataset.merged.ind
 outputformat: EIGENSTRAT
 strandcheck: YES

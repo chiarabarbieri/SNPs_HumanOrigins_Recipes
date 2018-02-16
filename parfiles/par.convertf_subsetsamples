@@ -1,0 +1,14 @@
+## paramfile for convertf
+# extract a selection of populations from the file poplistSelection1.txt. the output format can be EIGENSTRAT, or also PED (for converting into the plink format)
+
+genotypename: /MERGE/MyDataset.merged.geno
+snpname: /MERGE/MyDataset.merged.simple.snp
+indivname: /MERGE/MyDataset.merged.ind
+
+outputformat:   EIGENSTRAT
+
+genotypeoutname: DatasetPoplistSelection1.geno
+snpoutname: DatasetPoplistSelection1.snp
+indivoutname: DatasetPoplistSelection1.ind
+
+poplistname: poplistSelection1.txt

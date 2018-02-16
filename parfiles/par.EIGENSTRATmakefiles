@@ -7,7 +7,7 @@ indivname: yourpath/yourfile.ped
 
 outputformat:   EIGENSTRAT
 
-genotypeoutname: yourpath/Eigenstrat/yourfileEigenformat.geno
+genotypeoutname: yourpath/Eigenstrat/yourfileEigenformat
 snpoutname: yourpath/Eigenstrat/yourfileEigenformat.snp
 indivoutname: yourpath/Eigenstrat/yourfileEigenformat.ind
 familynames: NO
