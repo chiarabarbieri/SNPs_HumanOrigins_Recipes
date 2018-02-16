@@ -1,0 +1,18 @@
+# paramfile for running smartpca
+
+genotypename: /MERGE/MyDataset.merged.geno
+snpname: /MERGE/MyDataset.merged.simple.snp
+indivname: /MERGE/MyDataset.merged.ind
+
+
+evecoutname:     /PCA/EIGENVECTOROUT_MyDataset_set1.evec
+evaloutname:     /PCA/EIGENVECTOROUT_MyDataset_set1.eval
+altnormstyle:    NO
+familynames:     NO
+grmoutname:      grmjunk
+lsqproject: YES
+#outliermode: 2
+numoutlieriter: 0
+numoutevec: 3
+poplistname: /PCA/AmeModernAncient/poplistAmeAndAncient.txt
+
