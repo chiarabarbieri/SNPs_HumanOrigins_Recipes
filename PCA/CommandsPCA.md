@@ -31,10 +31,10 @@ ________________________________________
 
 Some examples:
 
-![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE1.png)
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE2.png)
 
 more beautiful plot, but less control over colors and symbols
 
-![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE2.png)
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/PCA/FIGURE1.png)
 
 
