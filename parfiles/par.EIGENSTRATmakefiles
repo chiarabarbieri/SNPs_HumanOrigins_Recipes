@@ -1,0 +1,13 @@
+## paramfile for convertf
+# convert from plink format (2 files) into Eignestrat forma (3 files)
+
+genotypename: yourpath/yourfile.ped
+snpname: yourpath/yourfile.map
+indivname: yourpath/yourfile.ped
+
+outputformat:   EIGENSTRAT
+
+genotypeoutname: yourpath/Eigenstrat/yourfileEigenformat
+snpoutname: yourpath/Eigenstrat/yourfileEigenformat.snp
+indivoutname: yourpath/Eigenstrat/yourfileEigenformat.ind
+familynames: NO
