@@ -1,0 +1,13 @@
+# parfile to use with the command mergeit
+
+geno1:	/MERGE/downloadedDatasetToMergeEigenformat.geno
+snp1:	/MERGE/downloadedDatasetToMergeEigenformat.simple.snp
+ind1:	/MERGE/downloadedDatasetToMergeEigenformat.ind
+geno2:	/MERGE/yourfileEigenformat.geno
+snp2:	/MERGE/yourfileEigenformat.simple.snp
+ind2:	/MERGE/yourfileEigenformat_Familypop_EIGEN.ind
+genooutfilename:	/MERGE/MyDataset.merged.geno
+snpoutfilename:	/MERGE/MyDataset.merged.simple.snp
+indoutfilename:	/MERGE/MyDataset.merged..ind
+outputformat: EIGENSTRAT
+strandcheck: YES
