@@ -1,0 +1,14 @@
+## paramfile for running Malder
+
+genotypename: /MERGE/MyDataset.merged.geno
+snpname: /MERGE/MyDataset.merged.simple.snp
+indivname: /MERGE/MyDataset.merged.ind
+
+admixpop:     TARGET  # the id of the population you are dating 
+
+refpops:      Spanish;Yoruba;Xavante #parent populations, in this case chosen to represent Europe, Africa, Native American
+
+chrom:        1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22
+checkmap:     NO
+
+raw_outname:  /MALDER/TARGET_Xavante_LDout
