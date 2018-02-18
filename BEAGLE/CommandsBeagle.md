@@ -87,7 +87,7 @@ _________________________________________
 ## Visualization
 
 The IBD block sharing data can be directly analyzed to reveal recent layers of contact, a concept similarly to a haplotype sharing.
-[This script] in R provides some examples for data visualization: sharing within population, between populations, on a matrix and on a map.
+[This script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/plotting_IBD_fromBeagle.r) in R provides some examples for data visualization: sharing within population, between populations, on a matrix and on a map.
 
 Section 1 will show you how to plot a matrix of IBD block sharing between populations and a length and LOD score for within population sharing.
 
