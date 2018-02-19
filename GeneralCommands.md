@@ -1,6 +1,8 @@
 
 # Prepare files for subsequent analysis
 
+ With standard plink and eigensoft commands.
+
 ## Format conversion
 My new genotype file came in plink format. I have two files: *yourfile.ped* and *yourfile.map* I will convert them to eigenstrat format to merge it with other public dataset. Some examples here https://reich.hms.harvard.edu/datasets
 
@@ -42,8 +44,20 @@ plink --file yourfile --het
 ```
 --het computes observed and expected autosomal homozygous genotype counts for each sample, and reports method-of-moments F coefficient estimates. It writes a report to *plink.het*
 
+### Runs of Homozygosity (ROH)
+Another useful plink function calculates the stretches of the two homologous chromosomes that have many homozygous SNPs in a row. These blocks within the same individual are identical by descent. ROH are also affected by inbreeding.
 
-go to R to visualize the results of the two plink analysis with this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/visualizeGeneralCommand.r)
+```
+plink --file yourfile --homozyg --homozyg-window-snp 50 --homozyg-window-het 1 --homozyg-window-missing 5 --homozyg-window-threshold 0.05 --homozyg-kb 500 --homozyg-density 50 --homozyg-gap 100 --homozyg-group --allow-no-sex --out yourfile_ROH
+```
+
+
+go to R to visualize the results of the plink analysis (pi Hat, F, and ROH) with this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/visualizeGeneralCommand.r)
+
+some examples of ROH visualization:
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/picturesAndExampleFiles/ROHexample1.png)
+
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/picturesAndExampleFiles/ROHexample2.png)
 
 ### Check for outliers with a PCA
 
