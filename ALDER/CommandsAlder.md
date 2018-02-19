@@ -59,6 +59,13 @@ grep -v "#" LD_decaycurveALL.txt > LD_decaycurveALLfilter.txt
 
 Now to R to plot the results of the file outputSuccessMalder.cat.txt. and LD_decaycurveALLfilter.txt with this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ALDER/PlottingALDER.R)
 
+Examples of figures:
+
+Admixture Times from Africa and Europe
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ALDER/Alder1.png)
+
+Linkage Disequilibrium Decay in three populations, sources from Africa and Europe
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ALDER/Alder2.png)
 
 
 
