@@ -1,9 +1,9 @@
-# SNPs_HumanOrigins_Recipes
+# SNPs HumanOrigins Recipes
 ## Commands and R scripts to analyse SNP data.
 
 The folder contains different sections for most used analysis methods to perform on SNP chip databases. It is particularly tailored to the use of the Human Origins Affymetrix array, and for analysis of human population history.
 
-The commands use publicity available softwares and packages (which you should install before) such as:
+The commands use publicity available softwares and packages such as:
  
 ### PLINK https://www.cog-genomics.org/plink2 
 
@@ -29,10 +29,18 @@ Other commands from software packages such as bcftools https://samtools.github.i
 
 
 ## CONTENT
-Start with the General Commands for some data overview, and then check each folder for instruction on how perform the analysis proposed.
+Start with the General Commands for data overview , and then check each folder for instruction on how perform the analysis proposed. Each folder contains a command .md file and in most case a dedicated R script for visualization purposes.
 
+_____________________________________________
 ## DISCLAIMER and biography notes:
-I am not a bioinformatician - I am "just" a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends. I am looking forward to improve them with suggestions and corrections.
+I am not a bioinformatician - I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be of use for colleagues who are new to this SNP platform and who want to find inspiration for R visualization commands. I am looking forward to improve this material with suggestions and corrections.
 
 Contact me with [email](mailto:barbieri.chiara@gmail.com)
+
+Built at University of Zurich - Department of Evolutionary Biology and Environmental Studies 
+
+
+![alt text](https://upload.wikimedia.org/wikipedia/de/thumb/8/89/Universit%C3%A4t_Z%C3%BCrich_logo.svg/200px-Universit%C3%A4t_Z%C3%BCrich_logo.svg.png)
+
+
 
