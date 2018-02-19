@@ -54,10 +54,16 @@ plink --file yourfile --homozyg --homozyg-window-snp 50 --homozyg-window-het 1 -
 
 go to R to visualize the results of the plink analysis (pi Hat, F, and ROH) with this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/visualizeGeneralCommand.r)
 
-some examples of ROH visualization:
+-------------------------
+
+Some examples of ROH visualization:
+
+
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/picturesAndExampleFiles/ROHexample1.png)
 
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/picturesAndExampleFiles/ROHexample2.png)
+
+-------------------------
 
 ### Check for outliers with a PCA
 
