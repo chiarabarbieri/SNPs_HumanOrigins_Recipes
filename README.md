@@ -31,13 +31,21 @@ Other commands from software packages such as bcftools https://samtools.github.i
 ## CONTENT
 Start with the General Commands for data overview , and then check each folder for instruction on how perform the analysis proposed. Each folder contains a command .md file and in most case a dedicated R script for visualization purposes.
 
+### Example data 
+Some example of elaborated data and plots are based on the dataset published in [Patterson et al. 2012](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2012_Patterson_AncientAdmixture_Genetics.pdf
+and [Lazaridis et al. 2014](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2014_Nature_Lazaridis_EuropeThreeAncestries.pdf)
+
+
 _____________________________________________
 ## DISCLAIMER and biography notes:
-I am not a bioinformatician - I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be of use for colleagues who are new to this SNP platform and who want to find inspiration for R visualization commands. I am looking forward to improve this material with suggestions and corrections.
+I am not a bioinformatician, I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be used by colleagues who are new to this SNP platform and who want to find inspiration for data visualization in R. I am looking forward to improve this material with suggestions and corrections.
 
 Contact me with [email](mailto:barbieri.chiara@gmail.com)
 
-Built at University of Zurich - Department of Evolutionary Biology and Environmental Studies 
+
+
+_________________________________________
+Developed at University of Zurich - Department of Evolutionary Biology and Environmental Studies. 
 
 
 ![alt text](https://upload.wikimedia.org/wikipedia/de/thumb/8/89/Universit%C3%A4t_Z%C3%BCrich_logo.svg/200px-Universit%C3%A4t_Z%C3%BCrich_logo.svg.png)
