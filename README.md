@@ -1,5 +1,5 @@
 # SNPs HumanOrigins Recipes
-## Commands and R scripts to analyse SNP data.
+## Commands and R scripts to analyse SNP data
 
 The folder contains different sections for most used analysis methods to perform on SNP chip databases. It is particularly tailored to the use of the Human Origins Affymetrix array, and for analysis of human population history.
 
@@ -38,7 +38,7 @@ and [Lazaridis et al. 2014](https://reich.hms.harvard.edu/sites/reich.hms.harvar
 
 _____________________________________________
 ## DISCLAIMER and biography notes:
-I am not a bioinformatician, I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be used by colleagues who are new to this SNP platform and who want to find inspiration for data visualization in R. I am looking forward to improve this material with suggestions and corrections.
+I am not a bioinformatician, I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be used by anyone new to this SNP platform and anyone who wants to find inspiration for simple data visualization in R. I am looking forward to improve this material with suggestions and corrections.
 
 Contact me with [email](mailto:barbieri.chiara@gmail.com)
 
@@ -50,5 +50,10 @@ Developed at University of Zurich - Department of Evolutionary Biology and Envir
 
 ![alt text](https://upload.wikimedia.org/wikipedia/de/thumb/8/89/Universit%C3%A4t_Z%C3%BCrich_logo.svg/200px-Universit%C3%A4t_Z%C3%BCrich_logo.svg.png)
 
+_____________________________________
 
+
+
+### Credits:
+External help from Irina Pugach (Plink, Admixture, Beagle, Alder), Fabrizio Mafessoni (Bash, awk) and colleagues from the Max Planck Institute for Evolutionary Anthropology, Leipzig; Hiba Babiker (convertf, smartpca) and colleagues from the Max Planck Institute for the Science of Human History, Jena; Luca Pagani (plink tips) from University of Padova. 
 
