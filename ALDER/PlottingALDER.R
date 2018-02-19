@@ -14,18 +14,21 @@ maldersuccess$Min<-ThisYear-((maldersuccess$divergenceTime+maldersuccess$interva
 maldersuccess$Max<-ThisYear-((maldersuccess$divergenceTime-maldersuccess$interval)*generationyeras)
 maldersuccess$couple<-paste(maldersuccess$ref_A,maldersuccess$ref_B)
 
-admixtureTarget<-c("Karitiana", "Surui", "Puertorico", "Lima", "Pima", "Aymara", "Mixe")
-poporder<-admixtureTarget
+poporder<-c()
+for (i in 1:length(pops)){
+  poporder[i]<-paste("POP",i,collapse = "", sep="")
+}
+# or just list the populations in any order you want to plot them
 
-
-pdf("divergenceAge_EuropeAfrica_Xavante_Malder.pdf")
+pdf("divergenceAge_EuropeAfrica_Malder.pdf")
 gg<-ggplot(maldersuccess,aes(x=AgeCalendarYear,y=test_pop, group=couple,color= couple))+
             geom_errorbarh(aes(xmin=Min,xmax=Max), alpha=0.2) +
             geom_point(na.rm=TRUE)+
             ggtitle("Admixture Times from Africa and Europe") +
             theme_bw() +
-            scale_fill_brewer(palette = "Accent")+
-              scale_y_discrete(limits=poporder)     # this will plot all the Target admixed in the right order on the Y axis       
+            #scale_fill_brewer(palette = "Accent")+
+            scale_color_manual(labels = c("Europe", "Africa"), values = c("darkgreen","purple"))+
+            scale_y_discrete(limits=poporder)     # this will plot all the Target admixed in the right order on the Y axis       
 gg
 dev.off()
 
@@ -63,54 +66,19 @@ dev.off()
 LD<-read.table("LD_decaycurveALLfilter.txt",header=T)
 LD<-LD[-which(LD$d=="Inf"),] # exclude values of d that are marked as Infinite
 
-subset<-LD[which(LD$Target=="Karitiana"),]
+LD<-LD[which(LD$Target%in%c("Bolivian", "Zapotec", "Quechua")),]
 
 library(ggplot2)
-poporder1<-as.character(poporder[which(poporder%in%maldersignificant$test_pop)])
+poporder1<-c("Bolivian", "Zapotec", "Quechua")
 
-# i will plot two ways: with all the three possible combinations of parental populations, and with the two combinations that are more relevant.
-totalLD_3admix<-matrix(NA,1,5)
-colnames(totalLD_3admix)<-c(  "d", "Italian_North.Xavante", "Italian_North.Yoruba", "Yoruba.Xavante", "target")
-totalLD_2admix<-matrix(NA,1,4)
-colnames(totalLD_2admix)<-c(  "d", "Italian_North.Xavante", "Yoruba.Xavante", "target")
-
-
-for (i in 1:length(poporder1)){
-poptemp<-poporder1[i]
-tempLD<-read.table(paste(poptemp,"_Xavante_LDout",sep="",collapse=""),header=T,as.is=T)
-tempLD<-tempLD[-which(tempLD$d=="Inf"),]
-tempLD$target<-poptemp
-if(ncol(tempLD)==5){
-totalLD_3admix<-rbind(totalLD_3admix,tempLD)
-} else {
-totalLD_2admix<-rbind(totalLD_2admix,tempLD)
-}
-}
-
-totalLD_2admix<-totalLD_2admix[-1,]
-totalLD_3admix<-totalLD_3admix[-1,]
-
-gg<-ggplot(totalLD_2admix,aes(x=d, y=value, color=variable))+
-geom_point(aes(x=d,y = Italian_North.Xavante, col="Italian_North.Xavante"), shape=3, size=0.02)+
-geom_point(aes(x=d,y = Yoruba.Xavante, col="Yoruba.Xavante"), shape=3, size=0.02)+
+gg<-ggplot(LD,aes(x=d, y=value, color=variable))+
+geom_point(aes(x=d,y = Spanish.Ecuador, col="Spanish.Ecuador"), shape=3, size=0.02)+
+geom_point(aes(x=d,y = Yoruba.Ecuador, col="Yoruba.Ecuador"), shape=3, size=0.02)+
+  scale_color_manual(labels = c("Europe", "Africa"), values = c("darkgreen","purple"))+
  ggtitle("Admixture LD decay from Africa and Europe") +
   theme_bw() +
-facet_wrap(~target, ncol=2)
-
+facet_wrap(~Target, ncol=1)
 gg
 
-dev2bitmap("LDdecay_Xavante_2sources.pdf",type="pdfwrite")
-
-
-gg<-ggplot(totalLD_3admix,aes(x=d, y=value, color=variable))+
-geom_point(aes(x=d,y = Italian_North.Xavante, col="Italian_North.Xavante"), shape=3, size=0.02)+
-geom_point(aes(x=d,y = Yoruba.Xavante, col="Yoruba.Xavante"), shape=3, size=0.02)+
-geom_point(aes(x=d,y = Italian_North.Yoruba, col="Italian_North.Yoruba"), shape=3, size=0.02)+
- ggtitle("Admixture LD decay from Africa and Europe") +
-  theme_bw() +
-facet_wrap(~target, ncol=3)
-gg
-
-dev2bitmap("LDdecay_Xavante_3sources.pdf",type="pdfwrite")
-
+ggsave("LDdecay_2sources.pdf",useDingbats=FALSE)
 
