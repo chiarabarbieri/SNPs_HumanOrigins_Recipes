@@ -32,7 +32,7 @@ Other commands from software packages such as bcftools https://samtools.github.i
 Start with the General Commands for data overview , and then check each folder for instruction on how perform the analysis proposed. Each folder contains a command .md file and in most case a dedicated R script for visualization purposes.
 
 ### Example data 
-Some example of elaborated data and plots are based on the dataset published in [Patterson et al. 2012](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2012_Patterson_AncientAdmixture_Genetics.pdf
+Some example of elaborated data and plots are based on the dataset published in [Patterson et al. 2012](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2012_Patterson_AncientAdmixture_Genetics.pdf) 
 and [Lazaridis et al. 2014](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2014_Nature_Lazaridis_EuropeThreeAncestries.pdf)
 
 
