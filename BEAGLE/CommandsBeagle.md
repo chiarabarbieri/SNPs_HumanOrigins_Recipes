@@ -89,7 +89,7 @@ _________________________________________
 The IBD block sharing data can be directly analyzed to reveal recent layers of contact, a concept similarly to a haplotype sharing.
 [This script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/plotting_IBD_fromBeagle.r) in R provides some examples for data visualization: sharing within population, between populations, on a matrix and on a map.
 
-Section 1 will show you how to plot a matrix of IBD block sharing between populations and a length and LOD score for within population sharing.
+**Section 1** will show you how to plot a matrix of IBD block sharing between populations and a length and LOD score for within population sharing.
 
 examples:
 
@@ -105,14 +105,18 @@ examples:
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/2.png)
 
 
-Section 3 visualizes the distribution (boxplot) of sharing for each population against two targets: in this case, one population to represent the sharing with Africa, and one population to represent the sharing with Europe.
+**Section 3** visualizes the distribution (boxplot) of sharing for each population against two targets: in this case, one population to represent the sharing with Africa, and one population to represent the sharing with Europe.
 
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/3.png)
 
 
-Section 4 will create a distance matrix (dissimilarity matrix) from the number of sharing events between populations, and will visualize population distances with a Multi Dimensional Scalind (MDS) plot.
+**Section 4** will create a distance matrix (dissimilarity matrix) from the number of sharing events between populations, and will visualize population distances with a Multi Dimensional Scalind (MDS) plot.
 
-Section 5 will display two different ways of visualizing data sharing on a map: with ggplot, each population will have its own plot, with dots over the populations who share with it, and size proportional to the amount of sharing. With library Maps, the network of sharing between populations will be plotted simultaneously, with thicker lines connecting populations who share more IBD blocks with each other.
+**Section 5** will display two different ways of visualizing data sharing on a map: with ggplot, each population will have its own plot, with dots over the populations who share with it, and size proportional to the amount of sharing. With library Maps, the network of sharing between populations will be plotted simultaneously, with thicker lines connecting populations who share more IBD blocks with each other.
+
+A simple map
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/4.1.png)
+
 
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLE/4.png)
 
