@@ -1,8 +1,4 @@
 "order"	"population"	"group"	"color"	"pch"	"lat"	"lon"
-"1"	1	"Yoruba"	"reference"	"red"	17	"NO"	"NO"
-"2"	2	"Italian_North"	"reference"	"red"	17	"NO"	"NO"
-"3"	3	"Spanish"	"reference"	"red"	17	"NO"	"NO"
-"4"	4	"Chukchi"	"central_north"	"#d6bbc0"	18	"NO"	"NO"
 "5"	5	"Cabecar"	"central_north"	"#d6bbc0"	15	"9.5"	"-84"
 "6"	6	"Pima"	"central_north"	"#d6bbc0"	17	"29"	"-108"
 "7"	7	"Mixe"	"central_north"	"#d6bbc0"	16	"16.95"	"-96.58333333"

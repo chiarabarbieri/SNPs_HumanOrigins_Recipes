@@ -8,7 +8,7 @@ library(ggplot2)
 
 
 info<-read.table("infosetIBD.txt", header=T) # this file includes a list of all the sample ID and relative population
-poporder<-read.table("poplist.txt")[,1]  # this file includes one column with all the populations i want to consider in the analysis, one after the other, in the order i prefer
+poporder<-read.table("poplistPLAY.txt")[,1]  # this file includes one column with all the populations i want to consider in the analysis, one after the other, in the order i prefer
 poporder<-as.vector(poporder)
 infored<-info[which(info$population%in%poporder),] # this command will optionally subset a list of individuals in the case in the original files i have some populations i do not want to consider in the analysis
 pops<-table(infored$populationOriginal)
@@ -23,7 +23,7 @@ ibd$source2<- info$population [match(ibd$V3, info$sample_ID)] # add a column wit
 ibd$length<-ibd$V7-ibd$V6 # add a column with the length of the segment in cM
 colnames(ibd)[8]<-"LOD" # this is the column with the LOD score, which indicates how robust is the segment, proportional to how many times it is found in the beagle run
 rownames(ibd) <- NULL
-write.table(ibd,paste("ibd_adjusted_centimorgan_ch",i,".txt",sep="", collapse=""), sep="\t", row.names=FALSE, col.names=FALSE)
+write.table(ibd,paste("ibd_adjusted_ch",i,".txt",sep="", collapse=""), sep="\t", row.names=FALSE, col.names=FALSE)
 }
 
 
@@ -214,7 +214,7 @@ dev.off()
 ibd<-ibd[which(ibd$LOD>10),]
 
 matrixIBD<-matrix(NA, length(poporder),length(poporder), dimnames=list(poporder, poporder))
-listpopInfo<-read.table("listpopInfo.txt", header=T)
+listpopInfo<-read.table("listpopInfoPlay.txt", header=T)
 
 for (i in 1:length(poporder)){
   for (k in 1:length(poporder)){
