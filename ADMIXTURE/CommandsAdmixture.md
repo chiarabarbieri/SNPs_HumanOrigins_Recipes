@@ -55,5 +55,5 @@ Elaborate this likelihood file in R, and visualize the Admixture results: follow
 
 Example of admixture for a set of population with K=7 (seven ancestry components)
 
-![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/amixture2.png)
+![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/admixture2.png)
 
