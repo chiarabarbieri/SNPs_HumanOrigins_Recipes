@@ -1,7 +1,7 @@
 # SNPs HumanOrigins Recipes
 ## Commands and R scripts to analyse SNP data
 
-The folder contains different sections for most used analysis methods to perform on SNP chip databases. It is particularly tailored to the use of the Human Origins Affymetrix array, and for analysis of human population history.
+This project contains different folders (sections) for some of the most used analysis methods to be performed on SNP chip databases. It is particularly tailored to the Human Origins Affymetrix array, and for analysis of human population history.
 
 The commands use publicity available softwares and packages such as:
  
@@ -29,16 +29,16 @@ Other commands from software packages such as bcftools https://samtools.github.i
 
 
 ## CONTENT
-Start with the General Commands for data overview , and then check each folder for instruction on how perform the analysis proposed. Each folder contains a command .md file and in most case a dedicated R script for visualization purposes.
+Start with the General Commands for how to first manipulate your dataset, and then check inside each folder for the relative command.md file, which will contain instructions to perform the analysis proposed. In most cases the commands refer to a separate R script to further elaborate and plot data. In some cases also examples of files to prepare separately for the analysis are included.
 
 ### Example data 
-Some example of elaborated data and plots are based on the dataset published in [Patterson et al. 2012](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2012_Patterson_AncientAdmixture_Genetics.pdf) 
+Some examples of elaborated data and plots are based on the datasets published in [Patterson et al. 2012](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2012_Patterson_AncientAdmixture_Genetics.pdf) 
 and [Lazaridis et al. 2014](https://reich.hms.harvard.edu/sites/reich.hms.harvard.edu/files/inline-files/2014_Nature_Lazaridis_EuropeThreeAncestries.pdf)
 
 
 _____________________________________________
 ## DISCLAIMER and biography notes:
-I am not a bioinformatician, I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be used by anyone new to this SNP platform and anyone who wants to find inspiration for simple data visualization in R. I am looking forward to improve this material with suggestions and corrections.
+I am not a bioinformatician! I am a molecular anthropologist. I recently started to explore and learn these methods when R alone proved to be not sufficient anymore for my genetic analysis. These commands were put together with the help of colleagues and friends and can be used by anyone new to this SNP platform and anyone who wants to find inspiration for simple data visualization in R. I am looking forward to improve this material with suggestions and corrections.
 
 Contact me with [email](mailto:barbieri.chiara@gmail.com)
 
