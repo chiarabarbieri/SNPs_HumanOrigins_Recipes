@@ -107,7 +107,7 @@ ______________________________
 
 ## Subset a list of populations from your merged dataset
 
-After creating the large merged dataset *MyDataset.merged*, it might be convenient to run some of the next analysis only with a subset of populations, for the purpose of the analysis or simply to speed up the calculations. I create a file *poplistSelection.txt* with only one column including a list of populations I want to extract from the original dataset. I make the [par file](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/parfiles/par.convertf_subsetsamples) to keep the Eigenstrat format (i use this format to run smartPCA) but i could also convert to PED plink format (I use this format to run Admixture)
+After creating the large merged dataset *MyDataset.merged*, it might be convenient to run some of the next analysis only with a subset of populations, for the purpose of the analysis or simply to speed up the calculations. I create a file *poplistSelection.txt* with only one column including a list of populations I want to extract from the original dataset. I make the [par file](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/parfiles/par.convertf_subsetsamples) to keep the Eigenstrat format (i use this format to run smartPCA) but i could also convert to PED plink format (I use this format to run [Admixture](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/CommandsAdmixture.md), for example) 
 
 ```
 convertf -p par.convertf_subsetsamples
