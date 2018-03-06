@@ -21,7 +21,9 @@ With this [parfile](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/
 Now imagine that I want to run Malder on a list of target populations, with the same setting of three potential parents . I have to create different parfiles, and run Malder on each of them. Here's a bash script to automatize part of the process - with a different [parfile](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/parfiles/par.MALDER_Xavante):
 
 ```
-for target in  Pima  Mixe Aymara Quechua Piapoco Guarani  Karitiana   ; do
+mypops=$( cat poplist.txt )
+
+for target in  $mypops; do
 sed s/TARGET/${target}/g par.MALDER_Xavante >  par.MALDER_Xavante_${target}
 malder -p par.MALDER_Xavante_${target} | tee M_Xavante_${target}.logfile
 grep 'success' M_Xavante_${target}.logfile > ${target}_Xavante_success_out.txt
@@ -41,8 +43,8 @@ I put together all the relevant information for each Target population that pass
 Take all the LD decay output files (they are called *Targetpopulation_LDout*) and add one extra column with the name of the target population (so you don't confuse the values after you merge them all in a single file)
 
 ```
-for target in  Pima  Mixe Aymara Quechua Piapoco Guarani  Karitiana   ; do
-awk '$5+=${target}' ${target}_LDout > ${target}_newLDout
+for target in  $mypops; do
+cat ${target}_Xavante_Spanish_LDout  | awk -v myvar=${target} '{print $1,$2,$3,$4,myvar}'> ${target}_newLDout
 done
 ```
 
