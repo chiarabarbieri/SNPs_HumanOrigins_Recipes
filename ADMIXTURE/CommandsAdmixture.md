@@ -19,12 +19,12 @@ Now the proper Admixture run. The following commands will run admixture with 100
 
 ```
 typeset -i run=0
-while (( run < 100 )); do  ## we usually run 100 runs for each K for accuracy of the final results
+while (( run < 100 )); do  ## you can try with 10 and then 100 runs for each K, for better results
 run=$(( run + 1 ));
 for K in 4 5 6 7 8 9 10; do  # select a meaningful series of K - the more Ks, the longer the run obviously
 admixture -s time --cv yourfile.pruned.ped $K -j6 | tee log.K${K}.RUN$run.out;
-mv set2CompSlim_plink.pruned100.$K.P K$K.Run$run.P;
-mv set2CompSlim_plink.pruned100.$K.Q K$K.Run$run.Q;
+mv yourfile.pruned.$K.P K$K.Run$run.P;
+mv yourfile.pruned.$K.Q K$K.Run$run.Q;
 done;
 done
 ```
