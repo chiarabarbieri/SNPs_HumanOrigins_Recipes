@@ -1,24 +1,36 @@
 R --
   # commands to elaborate admixture results and likelihood files, and plot
 
-# cross validation error
+### cross validation error
 
 read.table("CV.txt")->cv  
+
+# set which one was the smallest and the largest K that you ran
+minK<-3
+maxK<-12
+
+ordine<-c()
+for (k in minK:maxK){
+  ordine[k]<-paste("(K=",k,"):",sep="", collapse = "")
+}
+ordine<-ordine[-c(1:2)]
 
 library(ggplot2)
 
 p <- ggplot(cv, aes(x=V3, y=V4)) + 
   geom_boxplot()+ 
-  ggtitle("values associated to each K")
+  ggtitle("values associated to each K")+
+  scale_x_discrete(limits=ordine)
+  
 p
-pdf("distributionLikelihoodK_100run.pdf")
+pdf("distributionLikelihoodK_10run.pdf")
 p
 dev.off()
 
 
-### control the likelihood of the 100 runs for each K
+### control the likelihood of the number of runs for each K
 
-K_range<-c(4:10)  # select the number of K you run in Admixture
+K_range<-c(minK:maxK)  # select the number of K you run in Admixture
 
 catll<-c()
 for (i in K_range){
@@ -26,11 +38,18 @@ for (i in K_range){
  ll$K<-paste("ll",i,sep="", collapse = "")
  catll<-rbind(catll,ll)
 }
+ordine2<-c()
+for (k in 3:12){
+  ordine2[k]<-paste("ll",k,sep="", collapse = "")
+}
+ordine2<-ordine2[-c(1:2)]
 
 
 # plot the distribution of likelihood associated to each K, to see if it looks regular or if it's bimodal or other problems
 pdf("distributionLikelihoodK_perKSet1.pdf")
-ggplot(catll,aes(x=V2,fill=K)) + geom_histogram(position="dodge") + ggtitle("likelihood associated to each K")
+ggplot(catll,aes(x=K,y=V2)) + 
+  geom_boxplot() + ggtitle("likelihood associated to each K")+
+  scale_x_discrete(limits=ordine2)
 dev.off()
 
 # find the run with the highest likelihood for each K
@@ -96,17 +115,21 @@ for (i in 1:(length(my.labels)-1)){
   z[i]+my.labels[i+1]->z[i+1]
 }
 
+# select a color palette
+colorchoice=c("lightgreen","plum4","orange","brown","yellowgreen","red")
+# you can do better than this with colorbrewer. put together a number of colours equal Kmax.
+
 # now plot for each K
-K<-4 # chose the K to plot. Start with the lowest.
+K<-3 # chose the K to plot. Start with the lowest.
 
 choiceRun<-bestruns[which(rownames(bestruns)==K),]
 valuesToplot<-read.table(paste("K",K,".Run", choiceRun[2], ".Q", sep="", collapse = ""))
 
-tblSort<-tbl[MYINFO$oderAdmix,]
+valuesToplotSort<-valuesToplot[MYINFO$oderAdmix,]
 
 pdf(paste("AdmixtureForK",K,".pdf", sep="", collapse = ""),pointsize=8, height=3.5)
 
-barplot(t(as.matrix(tblSort)), col=c("brown","green","purple","orange"), axisnames=F, axes=F, space=0,border=NA)
+barplot(t(as.matrix(valuesToplotSort)), col=colorchoice[1:K], axisnames=F, axes=F, space=0,border=NA)
 axis(3, labels = FALSE, tick=F)
 for (i in c(0,z)){
   lines(x=c(i,i),y=c(0,3), lwd=0.7, col="white")
@@ -115,8 +138,8 @@ text(labels.coords, par("usr")[3] + 1.03 , srt = 45, adj = 0, labels = namespop,
 dev.off()
 
 # and repeat for K=5, K=6 etc.
-# This plotting system has a problem: for each new K i have to add a color manually, and the order of the colors for ancestry block is shuffled in every K
-# so i have to manually sort the colors to keep the color scheme in all K.
+# This plotting system has a problem: for each new K the colors for ancestry block are shuffled 
+# so i have to manually sort the colors to keep the color scheme consistent through all K.
 # other alternatives ways to plot i tried did not satisfy me yet. 
 
-# use colorbrewer or similar to find a  combination of colors graphically satisfying. 
+ 
