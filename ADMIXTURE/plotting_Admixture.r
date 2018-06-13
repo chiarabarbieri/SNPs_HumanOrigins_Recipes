@@ -39,7 +39,7 @@ for (i in K_range){
  catll<-rbind(catll,ll)
 }
 ordine2<-c()
-for (k in 3:12){
+for (k in minK:maxK){
   ordine2[k]<-paste("ll",k,sep="", collapse = "")
 }
 ordine2<-ordine2[-c(1:2)]
