@@ -57,7 +57,7 @@ now back to the shell for a final checkup.
 I notice i have the map files in morgans, but beagle wants them in centimorgan. I multiply the column with the physical distance on the chromosome for 100.
 
 ```
-for chromosome in {2..22}; do
+for chromosome in {1..22}; do
 awk '{$3 = $3 * 100; print}' referenceFromMyData_Chr${chromosome}.map > referenceFromMyDataCentimorgan_Chr${chromosome}.map
 done
 ```
