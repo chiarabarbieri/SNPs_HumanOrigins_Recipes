@@ -115,31 +115,39 @@ for (i in 1:(length(my.labels)-1)){
   z[i]+my.labels[i+1]->z[i+1]
 }
 
-# select a color palette
-colorchoice=c("lightgreen","plum4","orange","brown","yellowgreen","red")
-# you can do better than this with colorbrewer. put together a number of colours equal Kmax.
+# select a color palette manually
+colorchoice=c("lightgreen","plum4","orange","brown","yellow","red", "lightblue","pink","blue","darkgreen")
+# or ask the help of colorbrewer. put together a number of colours equal Kmax.
+library(RColorBrewer)
+n <- 23
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
+pie(rep(1,n), col=sample(col_vector, n))  # to visually check the available colors
+
 
 # now plot for each K
-K<-3 # chose the K to plot. Start with the lowest.
-
+par(mfrow = c(maxK-minK+1,1))
+for (K in  minK:maxK){ # chose the K to plot. Start with the lowest.
 choiceRun<-bestruns[which(rownames(bestruns)==K),]
 valuesToplot<-read.table(paste("K",K,".Run", choiceRun[2], ".Q", sep="", collapse = ""))
 
-valuesToplotSort<-valuesToplot[MYINFO$oderAdmix,]
+valuesToplotSort<-valuesToplot[MYINFO$orderAdmix,]
 
 pdf(paste("AdmixtureForK",K,".pdf", sep="", collapse = ""),pointsize=8, height=3.5)
 
-barplot(t(as.matrix(valuesToplotSort)), col=colorchoice[1:K], axisnames=F, axes=F, space=0,border=NA)
+barplot(t(as.matrix(valuesToplotSort)), col=sample(col_vector, K), axisnames=F, axes=F, space=0,border=NA)
 axis(3, labels = FALSE, tick=F)
 for (i in c(0,z)){
   lines(x=c(i,i),y=c(0,3), lwd=0.7, col="white")
 }
-text(labels.coords, par("usr")[3] + 1.03 , srt = 45, adj = 0, labels = namespop, cex=0.7, xpd = TRUE)
+text(labels.coords, par("usr")[3] + 1.03 , srt = 45, adj = 0, labels = namespop, cex=0.2, xpd = TRUE)
+
 dev.off()
 
-# and repeat for K=5, K=6 etc.
+}
+
+
 # This plotting system has a problem: for each new K the colors for ancestry block are shuffled 
 # so i have to manually sort the colors to keep the color scheme consistent through all K.
-# other alternatives ways to plot i tried did not satisfy me yet. 
 
  
