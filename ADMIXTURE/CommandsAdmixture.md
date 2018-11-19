@@ -15,11 +15,11 @@ plink --file yourfile --indep-pairwise 200 25 0.4 --out x.tmp
 plink --file yourfile --extract x.tmp.prune.in --recode12 --out yourfile.pruned
 ```
 
-Now the proper Admixture run. The following commands will run admixture with 100 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with 5 runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningful number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the actual data.
+Now the proper Admixture run. The following commands will run admixture with 10 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with less runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningful number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the actual data.
 
 ```
 typeset -i run=0
-while (( run < 100 )); do  ## you can try with 10 and then 100 runs for each K, for better results
+while (( run < 10 )); do  ##  with 10 runs for each K
 run=$(( run + 1 ));
 for K in 4 5 6 7 8 9 10; do  # select a meaningful series of K - the more Ks, the longer the run obviously
 admixture -s time --cv yourfile.pruned.ped $K -j6 | tee log.K${K}.RUN$run.out;
@@ -41,11 +41,11 @@ plot the distribution of values associated to each K in R.
 
 ![alt text](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/amixture1.png)
 
-For each K, determine which of the 100 runs has the highest likelihood.
+For each K, determine which of the 10 runs has the highest likelihood.
 
 ```
 for Kvalue in {4..10}; do
-for Try in {1..100}; do grep -h "^Loglikelihood:" log.K$Kvalue.RUN$Try.out; done  > LL.K$Kvalue.txt;
+for Try in {1..10}; do grep -h "^Loglikelihood:" log.K$Kvalue.RUN$Try.out; done  > LL.K$Kvalue.txt;
 done
 
 ```
