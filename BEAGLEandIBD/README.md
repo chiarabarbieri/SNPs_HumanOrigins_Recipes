@@ -109,7 +109,7 @@ wget "http://faculty.washington.edu/browning/refined-ibd/refined-ibd.12Jul18.a0b
 
 for run in {1..3}; do
 for chromosome in {1..22}; do
-java -Xss5m  -Xmx4g -jar refined-ibd.12Jul18.a0b.jar gt=RUN${run}_Beagle5Phased${chromosome}.vcf.gz map=/home/chiara_barbieri/Chad_personalAncestry/MAP/referenceFromMyData_Chr${chromosome}.map window=20 trim=0.3 out=RefinedIBD_RUN${run}.$chromosome
+java -Xss5m  -Xmx4g -jar refined-ibd.12Jul18.a0b.jar gt=RUN${run}_Beagle5Phased${chromosome}.vcf.gz map=referenceFromMyData_Chr${chromosome}.map window=20 trim=0.3 out=RefinedIBD_RUN${run}.$chromosome
 done
 done
 ```
@@ -128,7 +128,7 @@ gunzip *.ibd.gz
 
 for chromosome in {1..22}; do
 cat RefinedIBD_RUN1.${chromosome}.ibd RefinedIBD_RUN2.${chromosome}.ibd RefinedIBD_RUN3.${chromosome}.ibd > Chr${chromosome}.123.ibd
-cat Chr${chromosome}.123.ibd | java -jar merge-ibd-segments.12Jul18.a0b.jar RUN2_Beagle5Phased${chromosome}.vcf.gz  /home/chiara_barbieri/GenotypeAtlasPlink_Andes_2plates/Beagle_newisBetter/MapFromMyData/referenceFromMyDataCentimorgan_Chr${chromosome}.map 2 1 > Chr${chromosome}.IBD.Merged
+cat Chr${chromosome}.123.ibd | java -jar merge-ibd-segments.12Jul18.a0b.jar RUN2_Beagle5Phased${chromosome}.vcf.gz  referenceFromMyDataCentimorgan_Chr${chromosome}.map 2 1 > Chr${chromosome}.IBD.Merged
 done
 
 
