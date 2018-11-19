@@ -99,7 +99,7 @@ pintern
 ggsave("IBDsharingblocksWithinPopPlay.pdf", useDingbats=FALSE)
 
 #------------------------------------------------------------------
-Matrix of exchange between populations
+# Matrices of exchange between populations
 #------------------------------------------------------------------
 
 # matrix with the total number of shared blocks
@@ -245,7 +245,7 @@ geomelt<-melt(MatrixGeo)
 
 
 # ------------------------------------------------------------------------
-### SECTION 5
+### SECTION 2
 # map visualization with ggplot and with "connecting flight" mode.  - Figure 4B
 ## now the map with network connection like in Barbieri et al. 2017 Sci Rep
 # https://www.nature.com/articles/s41598-017-17728-w/figures/5
@@ -293,4 +293,98 @@ pdf("mapSharingNetworkRefinedIBD_.pdf")
   dev.off()
 
 }
+
+#-------------------------------
+# Section 3: visualize IBD sharing with specific sources (Figure S11)
+#-------------------------------
+
+MYINFORED<-infoIDred
+AdmixtureSource<-c("Yoruba", "Spanish") # external sources of admixture that we want to track in our dataset
+
+ibdExternalAdmixture<-ibd[union(which(ibd$source1%in%AdmixtureSource),which(ibd$source2%in%AdmixtureSource)),]
+ibdExternalAdmixture<-ibdExternalAdmixture[which(ibdExternalAdmixture$source1!=ibdExternalAdmixture$source2),] # exclude same pop sharing
+ibdExternalAdmixture<-ibdExternalAdmixture[-which((ibdExternalAdmixture$source1%in%AdmixtureSource)&(ibdExternalAdmixture$source2%in%AdmixtureSource)),] #exclude sharing between the two external sources of admixture
+
+OUTSOURCE<-c()
+TARGET<-c()
+for (i in 1:nrow(ibdExternalAdmixture)){
+  blocchetto<-c(as.character(ibdExternalAdmixture$source1[i]),as.character(ibdExternalAdmixture$source2[i]))
+  OUTSOURCE[i]<-blocchetto[which(blocchetto%in%AdmixtureSource)]
+  TARGET[i]<-blocchetto[-which(blocchetto%in%AdmixtureSource)]
+  }
+ibdExternalAdmixture$OutSource<-OUTSOURCE
+ibdExternalAdmixture$Target<-TARGET
+
+targetnames<-unlist(labels( table(ibdExternalAdmixture$Target)))
+
+matrixIBDadm<-matrix(NA, length(targetnames),length(AdmixtureSource), dimnames=list(targetnames, AdmixtureSource))
+
+for (i in 1:length(targetnames)){
+  for (k in 1:length(AdmixtureSource)){
+    pop.i=targetnames[i]
+    pop.k=AdmixtureSource[k]
+    temp<-ibdExternalAdmixture[union(which(ibdExternalAdmixture$Target==pop.i),which(ibdExternalAdmixture$OutSource==pop.i)),]
+    if (pop.i==pop.k){
+      matrixIBDadm[i,k]<- length(which(temp$Target==temp$OutSource))
+    } else {
+      tempp<-rbind(temp[which(temp$Target==pop.k),],temp[which(temp$OutSource==pop.k),])
+      matrixIBDadm[i,k]<-nrow(tempp)
+    }
+  }
+}
+
+matrixIBDTotLengthADMX<-matrix(NA, length(targetnames),length(AdmixtureSource), dimnames=list(targetnames, AdmixtureSource))
+#listpopInfo<-read.table("listpopInfo.txt", header=T)
+
+for (i in 1:length(targetnames)){
+  for (k in 1:length(AdmixtureSource)){
+    pop.i=targetnames[i]
+    pop.k=AdmixtureSource[k]
+    temp<-ibdExternalAdmixture[union(which(ibdExternalAdmixture$Target==pop.i),which(ibdExternalAdmixture$OutSource==pop.i)),]
+    if (pop.i==pop.k){
+      temp2<-temp[(which(temp$Target==temp$OutSource)),]
+      matrixIBDTotLengthADMX[i,k]<- sum(temp2$length)
+    } else {
+      tempp<-rbind(temp[which(temp$Target==pop.k),],temp[which(temp$OutSource==pop.k),])
+      matrixIBDTotLengthADMX[i,k]<-sum(tempp$length)
+    }
+  }
+}
+matrixIBDAverageLengthADMX<-matrix(NA, length(targetnames),length(AdmixtureSource), dimnames=list(targetnames, AdmixtureSource))
+
+for (i in 1:length(targetnames)){
+  for (k in 1:length(AdmixtureSource)){
+    pop.i=targetnames[i]
+    pop.k=AdmixtureSource[k]
+    temp<-ibdExternalAdmixture[union(which(ibdExternalAdmixture$Target==pop.i),which(ibdExternalAdmixture$OutSource==pop.i)),]
+    if (pop.i==pop.k){
+      temp2<-temp[(which(temp$Target==temp$OutSource)),]
+      matrixIBDAverageLengthADMX[i,k]<- mean(temp2$length)
+    } else {
+      tempp<-rbind(temp[which(temp$Target==pop.k),],temp[which(temp$OutSource==pop.k),])
+      matrixIBDAverageLengthADMX[i,k]<-mean(tempp$length)
+    }
+  }
+}
+
+meltIBDADMX<-melt(matrixIBDadm)
+colnames(meltIBDADMX)<-c("target", "source", "n_sharing")
+meltIBDlengthADMX<-melt(matrixIBDTotLengthADMX)
+meltIBDADMX$totalLength<-meltIBDlengthADMX$value
+meltIBDaverlengthADMX<-melt(matrixIBDAverageLengthADMX)
+meltIBDADMX$averageLength<-meltIBDaverlengthADMX$value
+meltIBDADMX<-meltIBDADMX[which(meltIBDADMX$n_sharing!=0),]
+meltIBDADMX<-meltIBDADMX[which(meltIBDADMX$n_sharing>1),] # filter for more than one episode of sharing between populations
+
+library(ggrepel)
+
+gg<-ggplot(meltIBDADMX, aes(x=n_sharing, y=averageLength, color=source, label=target))+
+  geom_point()+
+  geom_label_repel( aes(label=target), size=2.5,label.padding=0.1)+
+  ggtitle("IBD length Admixture") +
+  theme_bw() +
+  scale_color_brewer(palette = "Accent")
+gg
+
+ggsave("admixExternal_length_Sharing.pdf",useDingbats=FALSE)
 
