@@ -1,5 +1,5 @@
 # The "classic" Admixture
-Identifying ancestry components shared between individuals of set of populations.
+Identifying ancestry components and their proportion  for each individual in a set of populations.
 
 *note*: commands adapted from an original script by Irina Pugach.
 see [Pugach et al. 2018](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msx333/4782510) for more inputs on Admixture analysis, and other analysis with SNP chip datasets.
@@ -15,7 +15,7 @@ plink --file yourfile --indep-pairwise 200 25 0.4 --out x.tmp
 plink --file yourfile --extract x.tmp.prune.in --recode12 --out yourfile.pruned
 ```
 
-Now the proper Admixture run. The following commands will run admixture with 100 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with 5 runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningul number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the actual data.
+Now the proper Admixture run. The following commands will run admixture with 100 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with 5 runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningful number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the actual data.
 
 ```
 typeset -i run=0
