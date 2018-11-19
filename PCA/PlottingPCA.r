@@ -1,5 +1,5 @@
 ###  R
-# this script elaborates results from smartpca to creat PCA plots
+# this script elaborates results from smartpca to creat PCA plots (Figure 2)
 # first step is to modify the .evec file and add relevant information for each sample
 # for example the population, a color and a symbol (pch) for plotting
 
@@ -41,7 +41,7 @@ legend("center", legend=poplistinfo$population, col=as.character(poplistinfo$col
 dev2bitmap("PCA_1and2_colorPOP_manual_Myset.pdf", type="pdfwrite") # it is a bit ugly. play with the layout and par margins to make it fit better.
 
 
-# an example in ggplot, which looks more neat but does not help much because we cannot control the color palette
+# another simple example  of visualization in ggplot
 
 library(ggplot2)
 theme_set(theme_bw())  # pre-set the bw theme.
@@ -61,6 +61,27 @@ gg<-ggplot(infoEigenMY, aes(x=FIRST, y=SECOND) ) +
 gg
 dev.off()
 
-# observations: my data and the published data look different. 
-# Case 1: i am looking at very different populations
-# Case 2: i am looking at similar/same populations, but i have a batch effect. Problems in the lab, or problems in the merging of the SNPs.
+
+
+# ---------------------------------------------
+### PLOT THE NEIGHBOR JOINING TREE FROM FST POPULATION DISTANCES (Figure S3)
+# ---------------------------------------------
+
+# specify fstonly=YES if you want only the fst in the parfile of smartpca.
+
+FST<-read.table("FST_all") # your file from smartpca
+FST<-FST[,-1]
+rownames(FST)<-infoFST$population
+colnames(FST)<-infoFST$population
+
+m5<- as.dist(FST, diag=F, upper=F)
+
+library(ape, pegas)
+treeNJ<-nj(m5)
+treeNJ$edge.length[treeNJ$edge.length < 0] = 0.002 # a little trick to adjust eventual "negative" branches
+
+pdf("NJ_albero_allSNPS.pdf", useDingbats=FALSE)
+plot.phylo(treeNJ, type="u", tip.col=as.character(infoFST$color), cex=0.4 )  # when you have a infoFST file with same order of the FST matrix and a color code assigned to each population
+dev.off()
+
+
