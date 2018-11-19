@@ -1,3 +1,6 @@
+# NOTE: I DO NOT USE THIS SCRIPT ANYMORE, NOW I USE BEAGLE V5 AND REFINEDIBD.
+### SEE NEW SCRIPT VERSION HERE https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/BEAGLEandIBD/README.md
+
 # Phasing and estimation of IBD blocks with Beagle
 
 Beagle is a software that performs several functions, including a good and fast algorithm for phasing chromosome and a method to reconstruct blocks shared by identity by descent (IBD).
