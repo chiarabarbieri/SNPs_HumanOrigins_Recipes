@@ -43,9 +43,9 @@ The folder BEAGLE includes old scripts and should not be considered.
 
 The folder PCA includes commands to run smartPCA and R scripts to visualize PCA and calculate Neighbor Joining trees from Fst Distances, and plot it. 
 
-The folder ADMIXTURE includes commands to run ADMIXTURE and R scripts to elaborate the results and plot them.
+The folder ADMIXTURE includes commands to run ADMIXTURE and R scripts to elaborate the results of ADMIXTURE and plot them. It also include an R script to prepare for f3 run (from the Eigensoft package) and elaborate the results.
 
-The folder ALDER includes commands to run MALDER and R script to plot the results.
+The folder ALDER includes commands to run MALDER and the R script to plot the results.
 
 
 
