@@ -48,7 +48,7 @@ plink --file yourfile --het
 Another useful plink function calculates the stretches of the two homologous chromosomes that have many homozygous SNPs in a row. These blocks within the same individual are identical by descent. ROH are also affected by inbreeding.
 
 ```
-plink --file yourfile --homozyg --homozyg-window-snp 50 --homozyg-window-het 1 --homozyg-window-missing 5 --homozyg-window-threshold 0.05 --homozyg-kb 500 --homozyg-density 50 --homozyg-gap 100 --homozyg-group --allow-no-sex --out yourfile_ROH
+plink --file yourfile --homozyg --homozyg-snp 50--homozyg-window-snp 50 --homozyg-window-het 1 --homozyg-window-missing 5 --homozyg-window-threshold 0.05 --homozyg-kb 500 --homozyg-density 50 --homozyg-gap 100 --homozyg-group --allow-no-sex --out yourfile_ROH
 ```
 
 
