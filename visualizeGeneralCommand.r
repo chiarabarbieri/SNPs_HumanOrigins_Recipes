@@ -82,7 +82,7 @@ rownames(listpopInfo2)<-listpopInfo2$group
 listpopInfo2<-listpopInfo2[riordinacolori,]
 colorelli<-as.character(listpopInfo2$color)
 
-# plot the distribution of F (consanguineity)  for family groups (Fig S5A)
+# plot the distribution of F (consanguineity)  for family groups (Fig S6A)
 
 p <- ggplot(hetinfo, aes(x=FID,y=F))+
   geom_boxplot(aes(y =  F, fill = group, alpha=0.7,color=group)) +
@@ -103,12 +103,12 @@ ggsave("distributionF_boxplot.pdf", useDingbats=FALSE)
 
 
 #__________________________________________
-##### correlation between percentage of native ancestry and consanguineity (Figure S5B)
+##### correlation between percentage of native ancestry and consanguineity (Figure S6B)
 #__________________________________________
 
 het<-read.table("newHetCalculationsBeagleSet.het", header=T)
 hetinfo<-merge(het,infoID[,c(1,2,14,15,16)],by.x = "IID",by.y = "sample_ID" )
-admixprop<-read.table("admixtureProportionsInd.txt", header=T, as.is=T, comment.char = "") # this file comes from the ADMIXTURE run elaborated, it looks like this
+admixprop<-read.table("admixtureProportionsInd.txt", header=T, as.is=T, comment.char = "") # this file comes from the supervised ADMIXTURE run elaborated, it looks like this
 
 ----------
 sample_ID	pop1 Africa	Europe	Native
@@ -260,7 +260,7 @@ colorelli<-as.character(listpopInfo2[,19])
  write.table(indROHinfoMELTpop,"meltROHbinsXpops.txt",sep="\t")
  indROHinfoMELTpop<-read.table("meltROHbinsXpops.txt",header=T)
 
- # and now a loop to plot each pop (Figure S4)
+ # and now a loop to plot each pop (Figure S5)
  indROHinfoRED<-indROHinfo[which(indROHinfo$set=="presentstudy"),] #only the populations from the new dataset
 popp<-table(indROHinfoRED$population)
 
