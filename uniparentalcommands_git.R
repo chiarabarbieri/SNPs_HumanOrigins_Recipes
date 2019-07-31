@@ -6,12 +6,12 @@ https://haplogrep.uibk.ac.at/
 # Y chromosome: extract a .vcf file with the Y chromosome variants and run it with Yhaplo 
   https://github.com/23andMe/yhaplo
 
-### uniparental visualization: pie charts on a map (Figure S7)
+### uniparental visualization: pie charts on a map (Figure S8)
 
 # info file with meta information for each population
 info<-read.table("/Users/chiarabarbieri/Desktop/SNP_humOriginsAmericas/listpopInfo.txt", header=T, as.is=T,comment.char = "")
 
-# put the haplogroup results in a table, each line corresponding to one individual.
+# put the haplogroup results in a table, each line corresponding to one individual, columns with sampleID, population, haplogroup affiliation mtDNA_hg Ych_hg
 haplogroups<-read.table("uniparental.txt",header=T)
 
 infoRED<-info[which(info$population%in%haplogroups$Population),]
@@ -31,7 +31,7 @@ Yfreq$sizeY<-apply(Yfreq,1,sum)
 Yfreq$population<-rownames(Yfreq)
 
 infomerg<-merge(infoRED,mtfreq)
-infomerg<-merge(infomerg, Yfreq) # this object has the frequency of mt and Ych haplogroup per population, and the population sample size (different for Ych and mt)
+infomerg<-merge(infomerg, Yfreq) # this object has the frequency of mt and Ych haplogroup per population, and the population sample size (different sample size for Ych and mt, Y ch has only males)
 library(ggplot2)
 library(scatterpie)
 library(ggrepel)
@@ -61,7 +61,7 @@ ggsave("MapPieChart_Ych_all.pdf", useDingbats=FALSE)
 
 
 #---------------------------------------
-### proportion of non-Native ancestry in autosomal, mt and Ych (Figure S8)
+### proportion of non-Native ancestry in autosomal, mt and Ych (Figure S10)
 #---------------------------------------
 admixprop<-read.table("admixtureProportionsInd.txt", header=T, as.is=T, comment.char = "") # this file comes from the supervised ADMIXTURE run elaborated, it looks like this
 
