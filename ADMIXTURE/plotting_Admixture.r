@@ -6,8 +6,9 @@ R --
 read.table("CV.txt")->cv  
 
 # set which one was the smallest and the largest K that you ran
-minK<-3
+minK<-2
 maxK<-12
+K_range<-c(minK:maxK)
 
 ordine<-c()
 for (k in minK:maxK){
@@ -29,8 +30,6 @@ dev.off()
 
 
 ### control the likelihood of the number of runs for each K
-
-K_range<-c(minK:maxK)  # select the number of K you run in Admixture
 
 catll<-c()
 for (i in K_range){
@@ -119,10 +118,11 @@ for (i in 1:(length(my.labels)-1)){
 colorchoice=c("lightgreen","plum4","orange","brown","yellow","red", "lightblue","pink","blue","darkgreen")
 # or ask the help of colorbrewer. put together a number of colours equal Kmax.
 library(RColorBrewer)
-n <- 23
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
-pie(rep(1,n), col=sample(col_vector, n))  # to visually check the available colors
+colorchoice<-sample(col_vector, maxK)
+pie(rep(1,maxK), col=colorchoice)  # to visually check the available colors, until i find a combination i like
+write.table(colorchoice, "colorchoice", sep = "\t")
 
 
 # now plot for each K
