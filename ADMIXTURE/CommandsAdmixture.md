@@ -4,10 +4,12 @@ Identifying ancestry components and their proportion  for each individual in a s
 *note*: commands adapted from an original script by Irina Pugach.
 see [Pugach et al. 2018](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msx333/4782510) for more inputs on Admixture analysis, and other analysis with SNP chip datasets.
 
-Admixture is a software that works as Structure, but with faster computation. Download from https://www.genetics.ucla.edu/software/admixture/. It takes plink format input files.
+ADMIXTURE is a software that works as Structure, but with faster computation. Download from https://www.genetics.ucla.edu/software/admixture/. It takes plink format input files.
 
 
 ___________________________
+
+We run ADMIXTURE on the autosomal chromosomes (from 1 to 22) to avoid sex biased effects.
 
 First, prune the dataset for LD with Plink (settings which define window size, step and the r2 threshold described in the publication above).
 ```
@@ -15,7 +17,7 @@ plink --file yourfile --indep-pairwise 200 25 0.4 --out x.tmp
 plink --file yourfile --extract x.tmp.prune.in --recode12 --out yourfile.pruned
 ```
 
-Now the proper Admixture run. The following commands will run admixture with 10 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with less runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningful number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the actual data.
+Now the proper ADMIXTURE run. The following commands will run ADMIXTURE with 10 runs for each *K* (number of ancestry blocks) desired. The initial exploratory tests can be done with less runs per more *K*, to explore the diversity of many Ks, and then reduce them to a meaningful number for the analysis. There will be one *K* more supported by the analysis: this is the setup with the best representation of the structure in the data.
 
 ```
 typeset -i run=0
@@ -51,7 +53,7 @@ done
 ```
 
 
-Elaborate this likelihood file in R, and visualize the Admixture results: follow this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/plotting_Admixture.r)
+Elaborate this likelihood file in R, and visualize the ADMIXTURE results: follow this [script](https://github.com/chiarabarbieri/SNPs_HumanOrigins_Recipes/blob/master/ADMIXTURE/plotting_Admixture.r)
 
 Example of admixture for a set of population with K=7 (seven ancestry components)
 
