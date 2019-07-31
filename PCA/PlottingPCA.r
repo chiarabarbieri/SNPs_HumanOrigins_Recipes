@@ -64,7 +64,7 @@ dev.off()
 
 
 # ---------------------------------------------
-### PLOT THE NEIGHBOR JOINING TREE FROM FST POPULATION DISTANCES (Figure S3)
+### PLOT A NEIGHBOR JOINING TREE FROM FST POPULATION DISTANCES 
 # ---------------------------------------------
 
 # specify fstonly=YES if you want only the fst in the parfile of smartpca.
@@ -83,5 +83,50 @@ treeNJ$edge.length[treeNJ$edge.length < 0] = 0.002 # a little trick to adjust ev
 pdf("NJ_albero_allSNPS.pdf", useDingbats=FALSE)
 plot.phylo(treeNJ, type="u", tip.col=as.character(infoFST$color), cex=0.4 )  # when you have a infoFST file with same order of the FST matrix and a color code assigned to each population
 dev.off()
+
+# ------------------------------------------------------------------------------------------
+### PLOT A non-metric Multi Dimensional Scaling MDS plot FROM FST POPULATION DISTANCES (Figure S3A)
+# ------------------------------------------------------------------------------------------
+
+library("MASS")
+outliers<-c("Cabecar","Pima", "Chukchi", "Karitiana", "Paran","Xavante")
+FST2<-FST[-which(rownames(FST)%in%outliers),-which(colnames(FST)%in%outliers)]
+infoFST2<-infoFST[rownames(FST2),]
+m6<- as.dist(FST2)+0.00000001 # to avoid values equal to 0
+#exclude outliers
+
+
+isoMDS(m6, k=3)-> distanti
+ # here i ask for three dimensions, i will plot 1 vs 2 and 1 vs 3 separately
+
+distanti$points<-distanti$points[infoFST2$population,] # reorder, just in case
+
+pdf("MDS_2D_IBD_dissimilarity_12_normal.pdf", useDingbats=F)
+plot(distanti$points[,1]  ,distanti$points[,2],ylab="",xlab="", sub=paste("stress=",round(distanti$stress), collapse = "" ), main="non metric MDS", pch=16, col=as.character(infoFST2$color), xlim = c(-0.036,0.039),ylim = c(-0.036,0.039))
+text(distanti$points[,1]  ,distanti$points[,2],rownames(distanti$points),cex=0.5)
+#dev2bitmap("MDS_2D_IBD_dissimilarity.pdf",type="pdfwrite")
+dev.off()
+pdf("MDS_2D_IBD_dissimilarity_13_normal.pdf",useDingbats=F)
+plot(distanti$points[,1]  ,distanti$points[,3],ylab="",xlab="", sub=paste("stress=",round(distanti$stress), collapse = ""), main="non metric MDS", pch=16, col=as.character(infoFST2$color),xlim = c(-0.036,0.039),ylim = c(-0.036,0.039))
+text(distanti$points[,1]  ,distanti$points[,3],rownames(distanti$points),cex=0.5)
+#dev2bitmap("MDS_2D_IBD_dissimilarity.pdf",type="pdfwrite")
+dev.off()
+
+# ------------------------------------------------------------------------------------------
+### PLOT A HEATPLOT MATRIX OF FST POPULATION DISTANCES (Figure S3B)
+# ------------------------------------------------------------------------------------------
+
+infoRRED<-info[which(info$population%in%rownames(FST)),]
+
+popdistMELT <- melt(as.matrix(m5))
+p <- ggplot(popdistMELT, aes(X1, X2)) + geom_tile(aes(fill = value), colour = "white") + scale_fill_gradient(low = "white",   high = "steelblue")
+p+ theme(axis.text.x = element_text(angle = 45, vjust=1, hjust=1,colour=as.character(infoRRED$color)),axis.text.y = element_text(colour=as.character(infoRRED$color))) +
+  scale_x_discrete(limits=infoRRED$population)+
+  scale_y_discrete(limits=infoRRED$population)
+ggsave("FST_pruned_heatplotpops.pdf", useDingbats=FALSE)
+
+
+
+
 
 
