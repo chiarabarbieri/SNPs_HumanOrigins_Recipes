@@ -3,7 +3,7 @@
 
 This project contains different folders (sections) for some of the most used analysis methods to be performed on SNP chip databases. It is particularly tailored to the Human Origins Affymetrix array, and for analysis of human population history.
 
-Most of the commands are part of the analysis pipeline for the paper ........
+Most of the commands are part of the analysis pipeline for the paper **The current genomic landscape of western South America: Andes, Amazonia and Pacific Coast** https://10.1093/molbev/msz174
 
 The commands use publicity available softwares and packages such as:
  
@@ -33,7 +33,7 @@ Other commands from software packages such as bcftools https://samtools.github.i
 ## CONTENT
 Start with the General Commands for how to first manipulate your dataset, and then check inside each folder for the relative command.md file, which will contain instructions to perform the analysis proposed. In most cases the commands refer to a separate R script to further elaborate and plot data. In some cases also examples of files to prepare separately for the analysis are included.
 
-The General Commands and its related R script visualize file include format conversion, data screening for relatives and outliers, ROH, merging datasets, visualizing data on a map, correlation between percentage of native ancestry and consanguineity, plotting ROH in bins.
+The General Commands and its related R script visualize file include format conversion, data screening for relatives and outliers, Runs of Homozygosity (ROH), merging datasets, visualizing data on a map, correlation between percentage of native ancestry and consanguinity, plotting ROH in bins.
 
 The uniparental commands in R include some script to elaborate the haplogrup assignation for Y chromosome and mtDNA and plot frequency pie charts on a map. it also includes one script to plot percentage of native ancestry in autosomal (from ADMIXTURE), y ch and mtdna.
 
