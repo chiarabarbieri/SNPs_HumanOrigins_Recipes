@@ -12,13 +12,13 @@ colnames(ibd)<-c("firstID","firstHapIndex","secondID","secondHapIndex", "chromos
 infocomplete<-read.csv("infoForPopulation.csv", header=T, as.is=T , comment.char = "", fill=T) #info file each line one population
 infoID<-read.csv("InfoForIndividual.csv",header=T, as.is=T , comment.char = "", fill=T).  #info file each line one individual
 
-minimuminfo<-infoID[,c(2,1)]   # select the columns which have the sample ID name and the relative population
+minimuminfo<-infoID[,c(2,1)]   # select the columns which have the sample ID name and the corresponding population
 colnames(minimuminfo)[1]<-"firstID"
 ibdmatch<-merge(ibd,minimuminfo,all.x=TRUE)   # associate the population source for the first sample ID of the couple
 colnames(ibdmatch)[10]<-"source1"
 colnames(minimuminfo)[1]<-"secondID"
-ibdmatch2<-merge(ibdmatch,minimuminfo,all.x=TRUE). # associate the population source for the second sample ID of the couple
-colnames(ibdmatch2)[11]<-"source2". 
+ibdmatch2<-merge(ibdmatch,minimuminfo,all.x=TRUE) # associate the population source for the second sample ID of the couple
+colnames(ibdmatch2)[11]<-"source2"
 
 write.table(ibdmatch2, "refinedIBD_merged_withinfo.txt", row.names = F, quote=F)
 ibd<-ibdmatch2
@@ -206,8 +206,8 @@ meltIBD2<-meltIBD[-(which(meltIBD$source1==meltIBD$source2)),] #exclude same pop
 
 # you can filter for more significant pairs, like pairs that share more than once, or more than the median
 meltIBD22<-meltIBD2[which(meltIBD2$n_sharing!=0),]
-meltIBD22<-meltIBD2[which(meltIBD2$n_sharing>1),]
-meltIBD22<-meltIBD22[which(meltIBD22$sharingadjust>median(meltIBD22$sharingadjust)),]
+meltIBD22<-meltIBD2[which(meltIBD2$n_sharing>1),] # more than once
+meltIBD22<-meltIBD22[which(meltIBD22$sharingadjust>median(meltIBD22$sharingadjust)),] #more than the median
 
 gg<-ggplot(meltIBD22,aes(x=source1, y=source2, fill=sharingadjust, size=lengthadjust))+
   geom_point(shape=21)+
@@ -235,8 +235,8 @@ pops<-pops[poporder]
 
 
 library(fields)
-lista<-(cbind(as.numeric(infoRed$lon), as.numeric(infoRed$lat)))
-MatrixGeo<-rdist.earth (lista, miles=FALSE)
+lista<-(cbind(as.numeric(infoRed$lon), as.numeric(infoRed$lat))).   #with longitude and latitude coordinates
+MatrixGeo<-rdist.earth (lista, miles=FALSE).  #matrix of distance in km between locations
 rownames(MatrixGeo)<-infoRed$population
 colnames(MatrixGeo)<-infoRed$population
 
@@ -295,7 +295,7 @@ pdf("mapSharingNetworkRefinedIBD_.pdf")
 }
 
 #-------------------------------
-# Section 3: visualize IBD sharing with specific sources (Figure S11)
+# Section 3: visualize IBD sharing with specific sources (Figure S12)
 #-------------------------------
 
 MYINFORED<-infoIDred
