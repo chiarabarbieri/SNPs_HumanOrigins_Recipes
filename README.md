@@ -33,19 +33,19 @@ Other commands from software packages such as bcftools https://samtools.github.i
 ## CONTENT
 Start with the General Commands for how to first manipulate your dataset, and then check inside each folder for the relative command.md file, which will contain instructions to perform the analysis proposed. In most cases the commands refer to a separate R script to further elaborate and plot data. In some cases also examples of files to prepare separately for the analysis are included.
 
-The General Commands and its related R script visualize file include format conversion, data screening for relatives and outliers, Runs of Homozygosity (ROH), merging datasets, visualizing data on a map, correlation between percentage of native ancestry and consanguinity, plotting ROH in bins.
+The General Commands and its related R script visualize file include format conversion, data screening for relatives and outliers, Runs of Homozygosity (ROH), merging datasets, visualizing data on a map (Figure S1), correlation between percentage of native ancestry and consanguinity (Figure S6), plotting ROH in bins (Figure 3, Figure S5).
 
-The uniparental commands in R include some script to elaborate the haplogrup assignation for Y chromosome and mtDNA and plot frequency pie charts on a map. it also includes one script to plot percentage of native ancestry in autosomal (from ADMIXTURE), y ch and mtdna.
+The uniparental commands in R include some script to elaborate the haplogrup assignation for Y chromosome and mtDNA and plot frequency pie charts on a map (Figure S8). it also includes one script to plot percentage of native ancestry in autosomal (from supervised ADMIXTURE), y ch and mtdna (Figure S10).
 
-The folder BEAGLEandIBD includes the terminal commands to run Beagle and refindedIBD. its relative R script includes commands to plot IBD sharing between individuals, between populations, within populations, and between populations over a map.
+The folder BEAGLEandIBD includes the terminal commands to run Beagle and refindedIBD. its relative R script includes commands to plot IBD sharing between individuals, between populations (Figure 4a, Figure S12), within populations, and between populations over a map (Figure 4B).
 
 The folder BEAGLE includes old scripts and should not be considered.
 
-The folder PCA includes commands to run smartPCA and R scripts to visualize PCA and calculate Neighbor Joining trees from Fst Distances, and plot it. 
+The folder PCA includes commands to run smartPCA and R scripts to visualize PCA (Figure 2) and calculate Neighbor Joining trees, MDS and heatplots from Fst Distances (Figure S3), and plot it.  
 
-The folder ADMIXTURE includes commands to run ADMIXTURE and R scripts to elaborate the results of ADMIXTURE and plot them. It also include an R script to prepare for f3 run (from the Eigensoft package) and elaborate the results.
+The folder ADMIXTURE includes commands to run ADMIXTURE and R scripts to elaborate the results of ADMIXTURE and plot them (Figure S9, and similar to Figure S2, which in the paper is elaborated with PONG https://github.com/ramachandran-lab/pong). It also include an R script to prepare for f3 run (from the Eigensoft package) and elaborate the results (Figure S11).
 
-The folder ALDER includes commands to run MALDER and the R script to plot the results.
+The folder ALDER includes commands to run MALDER and the R script to plot the results (Figure 5).
 
 
 
