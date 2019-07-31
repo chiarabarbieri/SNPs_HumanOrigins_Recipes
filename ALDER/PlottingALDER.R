@@ -14,11 +14,8 @@ maldersuccess$Min<-ThisYear-((maldersuccess$divergenceTime+maldersuccess$interva
 maldersuccess$Max<-ThisYear-((maldersuccess$divergenceTime-maldersuccess$interval)*generationyeras)
 maldersuccess$couple<-paste(maldersuccess$ref_A,maldersuccess$ref_B)
 
-poporder<-c()
-for (i in 1:length(pops)){
-  poporder[i]<-paste("POP",i,collapse = "", sep="")
-}
-# or just list the populations in any order you want to plot them
+poporder<-as.character(read.table("yourlistofpopulations.txt")[,1])
+# this is the order you want the populations to be plotted on the y axis
 
 pdf("divergenceAge_EuropeAfrica_Malder.pdf")
 gg<-ggplot(maldersuccess,aes(x=AgeCalendarYear,y=test_pop, group=couple,color= couple))+
@@ -28,23 +25,10 @@ gg<-ggplot(maldersuccess,aes(x=AgeCalendarYear,y=test_pop, group=couple,color= c
             theme_bw() +
             #scale_fill_brewer(palette = "Accent")+
             scale_color_manual(labels = c("Europe", "Africa"), values = c("darkgreen","purple"))+
-            scale_y_discrete(limits=poporder)     # this will plot all the Target admixed in the right order on the Y axis       
+            scale_y_discrete(limits=rev(poporder))     # this will plot all the Target admixed in the right order on the Y axis       
 gg
 dev.off()
 
-# i want to exclude the admixture not supported by p value <0.01
-maldersignificant<-maldersuccess[which(maldersuccess[,3]<0.001),]
-
-pdf("divergenceAge_EuropeAfrica_Xavante_MalderSignificant0001.pdf")
-gg<-ggplot(maldersignificant,aes(x=AgeCalendarYear,y=test_pop,color= couple))+
-            geom_errorbarh(aes(xmin=Min,xmax=Max), alpha=0.2) +
-            geom_point(na.rm=TRUE)+
-            ggtitle("Admixture Times from Africa and Europe") +
-            theme_bw() +
-            scale_fill_brewer(palette = "Accent")+
-              scale_y_discrete(limits=poporder)            
-gg
-dev.off()
 
 # now color for the Z-score 
 pdf("divergenceAge_EuropeAfrica_Xavante_MalderSignificant0001_zscore.pdf")
