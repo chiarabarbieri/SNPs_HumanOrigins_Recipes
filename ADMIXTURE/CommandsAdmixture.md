@@ -4,7 +4,7 @@ Identifying ancestry components and their proportion  for each individual in a s
 *note*: commands adapted from an original script by Irina Pugach.
 see [Pugach et al. 2018](https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msx333/4782510) for more inputs on Admixture analysis, and other analysis with SNP chip datasets.
 
-ADMIXTURE is a software that works as Structure, but with faster computation. Download from https://www.genetics.ucla.edu/software/admixture/. It takes plink format input files.
+ADMIXTURE is a software that works as Structure, but with faster computation. Download from https://dalexander.github.io/admixture/download.html. It takes plink format input files.
 
 
 ___________________________
